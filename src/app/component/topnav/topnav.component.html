@@ -1,0 +1,24 @@
+        <!-- Navigation -->
+        <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0;">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                <img alt="Top Navigation Logo" class="topnav-logo" src="{{topNavLogoUrl}}">
+                <span class="topnav-header">{{topNavTitle}}</span> 
+              </div>
+        </div>
+          </nav> -->
+
+
+<header>
+<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark navbar-default scrolling-navbar ie-nav" [containerInside]="false">
+  <logo>
+      <a href="{{redirectLogin}}"><img alt="Top Navigation Logo" class="topnav-logo" src="{{topNavLogoUrl}}" height="50" class="d-inline-block align-top"></a>
+      <a class="navbar-brand"><strong>{{topNavTitle}}</strong></a>
+  </logo> 
+  
+</mdb-navbar>
+</header>  
+
+
+      
+  

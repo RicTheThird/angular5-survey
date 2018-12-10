@@ -1,0 +1,8 @@
+{
+    "/iassurvey/*":{
+        "target":"http://localhost:446/iassurvey/",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {"^/iassurvey" : ""}
+    }
+}

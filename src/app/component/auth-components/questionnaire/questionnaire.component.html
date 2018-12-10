@@ -1,0 +1,132 @@
+<div style="height:130px;"></div>
+<section class="section">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 mb-5" *ngIf="questionnaires !== null && !isCompleted">
+      <!-- Question Cards -->
+      <ng-container *ngFor="let quest of questionnaires; let i = index">
+        <div class="card mx-xl-6" *ngIf="quest.parentQuestion !== undefined && questionnaireCardsIsVisible[i]">
+          <div class="card-header" *ngIf="quest.parentQuestion !== undefined && quest.parentQuestion !== null">
+            <h5 class="text-left" [innerHtml]="quest.parentQuestion.questionText | sanitizeHtml"></h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="questionnaireForm[i]" novalidate autocomplete="off">
+              <ng-container *ngIf="quest.parentQuestion !== undefined && quest.parentQuestion.answers.length > 0">
+                <mat-radio-group *ngIf="quest.parentQuestion.questionType === 'radio'" formControlName="{{ quest.parentQuestion.questionCode }}">
+                  <ng-container *ngFor="let parentAns of quest.parentQuestion.answers | orderby : ['answerSeq']">
+                    <div class="row">
+                      <mat-radio-button value="{{ parentAns.answerCode }}" (change)="radioChange(i,quest.parentQuestion.questionCode,parentAns.answerCode,quest.subQuestions)">
+                        {{ parentAns.answerText }}
+                      </mat-radio-button>
+                    </div>
+                    <div class="clearTop"></div>
+                  </ng-container>
+                </mat-radio-group>
+              </ng-container>
+              <!-- SubQuestions -->
+              <ng-container *ngIf="quest.subQuestions !== null">
+                <ng-container *ngFor="let subQuest of quest.subQuestions | orderby : ['questionSeq'] ">
+                  <div class="row" *ngIf="subQuest.questionType === 'radio'">
+                    <div class="col-md-6">
+                      <label [innerHtml]="subQuest.questionText | sanitizeHtml"></label>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-radio-group formControlName="{{ subQuest.questionCode }}">
+                        <ng-container *ngFor="let subAns of subQuest.answers | orderby : ['answerSeq']">
+                          <mat-radio-button value="{{ subAns.answerCode }}">{{ subAns.answerText }}</mat-radio-button>
+                        </ng-container>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+                  <!-- remarks -->
+                  <div *ngIf="questionnaireForm[i].get(quest.parentQuestion.questionCode)?.value === 'rad_no'">
+                    <div class="clearTop"></div>
+                    <div class="row" *ngIf="subQuest.questionType === 'textarea' || subQuest.questionType === 'text'">
+                      <mat-form-field class="full-width">
+                        <small class="pull-right">{{ 1000 - questionnaireForm[i].get(subQuest.questionCode).value?.length }} characters remaining</small>
+                        <textarea matInput formControlName="{{ subQuest.questionCode }}" [placeholder]="subQuest.questionText" matTextareaAutosize
+                          matAutosizeMinRows="0" matAutosizeMaxRows="5" maxlength="1000" matAutosizeMinCols="10"></textarea>
+                        <mat-error *ngIf="questionnaireForm[i].controls[subQuest.questionCode].invalid">Please complete the remarks section<br>请填写附注部分。</mat-error>
+                      </mat-form-field>
+                      <!-- <mat-error *ngIf="questionnaireForm[i].controls[subQuest.questionCode].invalid">Please complete the remarks section</mat-error> -->
+                    </div>
+                  </div>
+                  <!-- end remarks -->
+                </ng-container>
+              </ng-container>
+              <!-- End SubQuestions -->
+            </form>
+          </div>
+          <!-- Footer -->
+          <div class="card-footer bg-primary">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="pull-left">
+                  <button mat-raised-button color="primary" type="button" (click)="navigate(i-1, 'prev')">Previous&#10;上一页</button>
+                </div>
+                <div class="pull-right">
+                  <button mat-raised-button color="primary" class="pull-right" [disabled]="!questionnaireForm[i].valid" type="submit" (click)="navigate(i+1, 'next')">
+                    <span *ngIf="i === questionnaireForm.length - 1">Submit&#10;完成</span>
+                    <span *ngIf="i < questionnaireForm.length - 1">Next&#10;下一页</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End footer -->
+        </div>
+      </ng-container>
+      <!-- End Question Cards -->
+    </div>
+    <!-- Thank you card -->
+    <div class="col-md-6 mb-5" *ngIf="isCompleted">
+      <div class="card mx-xl-6">
+        <div class="card-body text-center">
+          <div [ngClass]="isCompleted? 'circle-loader load-complete' : 'circle-loader'">
+            <div [ngClass]="isCompleted? 'checkmark draw' : 'draw'"></div>
+          </div>
+          <h3>Thank You</h3>
+          <p>for taking the time to complete this survey.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="data-table" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Key Points Table</h4>
+      </div>
+      <div class="modal-body modal-dt">
+        <table class="table table-hover table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>Product(s)</th>
+              <th>Key Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of dataTable">
+              <td [innerHtml]="row.sn"></td>
+              <td [innerHtml]="row.products"></td>
+              <td>
+                <ol type="i">
+                  <li *ngFor="let keyPoints of row.keyPoints" [innerHtml]="keyPoints"></li>
+                </ol>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button color="primary" class="pull-right" type="button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

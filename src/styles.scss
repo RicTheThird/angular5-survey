@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+.backgroundClass{
+    background: url('./assets/img/background-img-old.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./assets/img/background-img-old.png', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./assets/img/background-img-old.png', sizingMethod='scale')";
+}
+.navbar-default{
+    background: #FECF07;
+    background-image: none;
+    background-repeat: no-repeat;
+    border-bottom: solid 1px #ffb505;
+}
+.deep-blue-gradient {
+    background-image: linear-gradient(120deg, #ffc107 65%, #8ec5fc 100%);
+}
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.mat-button {
+    color: #ffffff;
+}
+.has-danger{border-color: red;}
+.has-success{border-color: green;}
+.text-full-width{width: 100%;}
+.icon-size{font-size: 36px;}

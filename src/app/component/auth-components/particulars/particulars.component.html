@@ -1,0 +1,134 @@
+<div style="height:100px;"></div>
+<section class="section">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 mb-5">
+      <div class="card mx-xl-5">
+        <form *ngIf="loaded" [formGroup]="questionnaireForm" novalidate autocomplete="off">
+          <div class="card-body">
+            <div class="form-header deep-blue-gradient rounded">
+              <h3 class="text-center">
+                <i class="fa fa-wpforms"></i> Personal Particulars</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-2">
+                <img class="material-icons icon-size" src="assets/img/baseline_person_black_24dp.png">
+              </div>
+              <div class="col-md-10">
+     
+                  <mat-form-field class="text-full-width">
+                    <mat-label>Main Applicant's Name:</mat-label>
+                    <input matInput formControlName="mainApplicant" name="mainApplicant">
+                    <!-- <mat-error *ngIf="mainApplicant.errors?.required">This field is required</mat-error> -->
+                  </mat-form-field>
+ 
+                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <img class="material-icons icon-size" src="assets/img/baseline_people_black_24dp.png">
+              </div>
+              <div class="col-md-10">
+                <mat-form-field class="text-full-width">
+                  <mat-label>Joint Applicant's Name:</mat-label>
+                  <input matInput formControlName="jointApplicant" name="jointApplicant">
+                  <mat-error>This field is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <img class="material-icons icon-size" src="assets/img/baseline_assignment_ind_black_24dp.png">
+              </div>
+              <div class="col-md-10">
+                <mat-form-field class="text-full-width">
+                  <mat-label>Appointed Representative (AR):</mat-label>
+                  <input matInput formControlName="appointedRep" name="appointedRep">
+                  <mat-error *ngIf="appointedRep.errors?.required">This field is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <img class="material-icons icon-size" src="assets/img/baseline_local_phone_black_24dp.png">
+              </div>
+              <div class="col-md-2">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Country Code</mat-label>
+                  <mat-select [formControl]="countryCode">
+                    <mat-option [value]="null">Select here</mat-option>
+                    <mat-option *ngFor="let country of countries" [value]="country.code">
+                      {{ country.name }} ({{country.code}})
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">&nbsp;</div>
+              <div class="col-md-5">
+                <mat-form-field class="text-full-width">
+                  <mat-label>Contact Number:</mat-label>
+                  <input matInput formControlName="contactNum" name="contactNum" maxlength="15">
+                  <mat-error *ngIf="contactNum.errors?.pattern">Only numeric values are allowed</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <img class="material-icons icon-size" src="assets/img/baseline_event_black_24dp.png">
+              </div>
+              <div class="col-md-10">
+                <mat-form-field class="text-full-width">
+                  <mat-label>Product Purchase Date:</mat-label>
+                  <input matInput formControlName="purchaseDate">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <img class="material-icons icon-size" src="assets/img/baseline_description_black_24dp.png">
+              </div>
+              <div class="col-md-10">
+                <mat-form-field class="text-full-width">
+                  <mat-label>Product Type:</mat-label>
+                  <textarea matInput name="productType" formControlName="productType" placeholder="Product type"
+                    matTextareaAutosize matAutosizeMinRows="0" matAutosizeMaxRows="5" maxlength="1000"
+                    matAutosizeMinCols="10"></textarea>
+                  <!-- <input matInput formControlName="productType" name="productType" maxlength="8"> -->
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-card-title>Important Notes:</mat-card-title>
+                <br />
+                <mat-card-content>
+                  1. Please be informed that we may contact you further to discuss on your responses which will be
+                  recorded for the purposes
+                  identified in our Data Protection Policy available at
+                  <a target="blank" href="http://www.maybank2u.com.sg">www.maybank2u.com.sg</a>
+                </mat-card-content>
+                <br />
+                <mat-card-content>
+                  2. *Please note that the information provided above does not serve as a notification for update of
+                  personal particulars.
+                </mat-card-content>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bg-primary">
+            <div class="row">
+              <div class="col-md-12 text-right">
+                <button mat-raised-button color="primary" type="submit" (click)="proceed()" [disabled]="!questionnaireForm.valid">Start
+                  the survey</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+</section>
+<!--Section: Features v.3-->

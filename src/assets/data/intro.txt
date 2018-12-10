@@ -1,0 +1,25 @@
+<p><strong>Dear Valued Client</strong></p>
+<p>We noted from our records that you have recently purchased at least one insurance/investment product with us.</p>
+<p>As part of our commitment to safeguard your interest, we would like to seek your valuable feedback to help us enhance
+your sales and advisory experience with Maybank.</p>
+<p>Do note that the survey is valid till surveyExpiry only and your early response would be greatly appreciated.
+Please also be assured that all responses will be kept confidential.
+</p>
+<p>Should you have any further queries, please feel free to contact our Customer Relationship Executives at 1800-MAYBANK
+(1800-629 2265) or (65) 6533 5229 (Overseas).
+</p>
+<p>Alternatively, you may email us at salesaudit@maybank.com.sg.</p>
+<p>Thank you for supporting Maybank. We look forward to receiving your feedback.</p>
+<p>Yours sincerely,</p>
+<p><strong>Sales Audit</strong><br><strong>Maybank Singapore</strong></p>
+<br>
+<p><strong>亲爱的客户</strong></p>
+<p>我们从记录中注意到您最近向本行购买了至少一种保险/投资产品。</p>
+<p>作为我们保护您的利益的承诺之一，我们希望能获取您的宝贵意见，帮助我们提升您与马来亚银行的销售和咨询体验。</p>
+<p>请注意，本调查仅在surveyExpiryCh之前有效，恳请您尽早作答，我们将不胜感激。另外也请您放心，所有答案将获得严格保密。</p>
+<p>如果您尚有其他疑问，请随时致电 1800-MAYBANK（1800-629 2265）或（65）6533 5229（海外）联系我们的客户关系主管。</p>
+<p>或者，您可以发送电邮至salesaudit@maybank.com.sg。</p>
+<p>感谢您对马来亚银行的支持。我们十分期待收到您的意见反馈。</p>
+<p>您诚挚的</p>
+<p>销售审计部门</p>
+<p><strong>马来亚银行新加坡有限公司</strong></p>

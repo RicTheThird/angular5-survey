@@ -1,0 +1,54 @@
+<section class="section">
+  <div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6 mb-5">
+      <!-- login card -->
+      <div class="card mx-xl-5 login-card" *ngIf="!isReady">
+        <div class="card-body">
+          <div class="form-header deep-blue-gradient rounded">
+            <h3 class="text-center">
+              <i class="fa fa-wpforms"></i> Client Survey</h3>
+          </div>
+          <form [formGroup]="entryForm" novalidate autocomplete="off">
+            <div class="row">
+              <div class="col-md-2">
+                <img class="material-icons icon-size account-circle" src="assets/img/baseline_account_circle_black_24dp.png">
+              </div>
+              <div class="col-md-10">
+                <mat-form-field class="text-full-width">
+                  <mat-label>Please enter your valid NRIC/Passport No:</mat-label>
+                  <!-- pattern="[a-zA-Z0-9]+" maxlength="12" -->
+                  <input matInput formControlName="nricNo"  (keydown)="keyDownHandler($event)" maxlength="12">
+                  <mat-error *ngIf="nricNo.errors?.required">NRIC No is required</mat-error>
+                  <mat-error *ngIf="nricNo.errors?.pattern">No special characters allowed</mat-error>
+                  <!-- <mat-error *ngIf="nricNo.errors?.pattern">Only Alphanumeric allowed.</mat-error> -->
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <button mat-raised-button color="primary" type="submit" (click)="proceed()" [disabled]="!entryForm.valid">Proceed</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- End login card -->
+
+      <!-- Intro card -->
+      <div class="card mx-xl-6 intro-card" *ngIf="isReady" [@slideInOut]>
+        <div class="card-body" [innerHtml]="introTemplate" >
+        </div>
+        <div class="card-footer bg-primary">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <button mat-raised-button color="primary" type="button" (click)="gotoPP()">Okay to proceed</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Intro card -->
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</section>
+<!--Section: Features v.3-->

@@ -1,0 +1,63 @@
+.error-text {
+    padding-top: 9em;
+    text-align: center;
+}
+
+@media (max-width: 384px){
+    .error-text {
+        padding-top: 1em;
+    }
+}
+
+@media (max-width: 414px) {
+    .error-text {
+        padding-top: 2em;
+    }
+}
+@media (max-width: 480px) {
+    .error-text {
+        padding-top: 6em;
+    }
+}
+
+@media (max-width: 667px) {
+    .error-text {
+        padding-top: 2em;
+    }
+}
+
+@media (max-width: 736px) {
+    .error-text {
+        padding-top: 3em;
+    }
+}
+
+@media (max-width: 900px) {
+    .error-text {
+        padding-top: 5em;
+        text-align: center;
+    }
+}
+
+.error-text h2 {
+    font-size: 14em;
+    letter-spacing: 20px;
+    color: #fff;
+}
+
+span {
+    color: #fbb034;
+}
+
+h3 {
+    font-size: 2em;
+    letter-spacing: 18px;
+    color: #fff;
+}
+
+h1 {
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 900;
+    line-height: 1.8em;
+}
